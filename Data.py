@@ -1,6 +1,48 @@
 ##Important: Outline and data was created by ChatGPT
 
 
+
+
+class MonthData:
+    def __init__(self, month, avg_sunspots, storm_count, max_severity):
+        self.month = month
+        self.avg_sunspots = avg_sunspots
+        self.storm_count = storm_count
+        self.max_severity = max_severity
+
+
+class YearData:
+    def __init__(self, year, months_dict):
+        self.year = year
+        # dict: "Jan" -> MonthData(...)
+        self.months = {
+            month: MonthData(month, data["avg_sunspots"], data["storm_count"], data["max_severity"])
+            for month, data in months_dict.items()
+        }
+
+class SolarCycle:
+    def __init__(self, cycle_number, start_date, end_date, duration_years, years_dict):
+        self.cycle_number = cycle_number
+        self.start_date = start_date
+        self.end_date = end_date
+        self.duration_years = duration_years
+        # dict: 1989 -> YearData(...)
+        self.years = {
+            year: YearData(year, months)
+            for year, months in years_dict.items()
+        }
+
+def cycle_from_dict(d):
+    return SolarCycle(
+        d["cycle_number"],
+        d["start_date"],
+        d["end_date"],
+        d["duration_years"],
+        d["years"]
+    )
+
+
+
 # Solar Cycle 21
 cycle21 = {
     "cycle_number": 21,
@@ -488,3 +530,6 @@ cycle23 = {
             "Nov": {"avg_sunspots": 6.6, "storm_count": 0, "max_severity": 0},
             "Dec": {"avg_sunspots": 1.0, "storm_count": 0, "max_severity": 0},
         }}}
+cycle21_obj = cycle_from_dict(cycle21)
+cycle22_obj = cycle_from_dict(cycle22)
+cycle23_obj = cycle_from_dict(cycle23)
