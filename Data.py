@@ -1,7 +1,19 @@
 ##Important: Outline and data was created by ChatGPT
 
+month_order = {
+    "Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4,
+    "May": 5, "Jun": 6, "Jul": 7, "Aug": 8,
+    "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12
+}
 
+def percent_complete(cycle, year, month):
+    start_year = int(cycle.start_date)
+    total_months = cycle.duration_years * 12
 
+    months_passed = (year - start_year) * 12
+    months_passed += (month_order[month] - 1)
+
+    return round((months_passed / total_months) * 100, 2)
 
 class MonthData:
     def __init__(self, month, avg_sunspots, storm_count, max_severity):
@@ -9,6 +21,11 @@ class MonthData:
         self.avg_sunspots = avg_sunspots
         self.storm_count = storm_count
         self.max_severity = max_severity
+
+
+    def __repr__(self):
+            return (f"MonthData(month={self.month!r}, avg_sunspots={self.avg_sunspots}, "
+                    f"storm_count={self.storm_count}, max_severity={self.max_severity!r})")
 
 
 class YearData:
@@ -19,6 +36,9 @@ class YearData:
             month: MonthData(month, data["avg_sunspots"], data["storm_count"], data["max_severity"])
             for month, data in months_dict.items()
         }
+
+    def __repr__(self):
+        return f"YearData(year={self.year}, months={list(self.months.keys())})"
 
 class SolarCycle:
     def __init__(self, cycle_number, start_date, end_date, duration_years, years_dict):
@@ -31,6 +51,10 @@ class SolarCycle:
             year: YearData(year, months)
             for year, months in years_dict.items()
         }
+
+    def __repr__(self):
+        return (f"SolarCycle(cycle_number={self.cycle_number}, "f"years={min(self.years)}–{max(self.years)})")
+
 
 def cycle_from_dict(d):
     return SolarCycle(
@@ -533,3 +557,5 @@ cycle23 = {
 cycle21_obj = cycle_from_dict(cycle21)
 cycle22_obj = cycle_from_dict(cycle22)
 cycle23_obj = cycle_from_dict(cycle23)
+
+
