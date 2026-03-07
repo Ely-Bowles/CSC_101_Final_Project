@@ -70,8 +70,8 @@ def cycle_from_dict(d):
 # Solar Cycle 21
 cycle21 = {
     "cycle_number": 21,
-    "start_date": "1976",   # official NOAA/SIDC timing
-    "end_date": "1986",
+    "start_date": 1976,   # official NOAA/SIDC timing
+    "end_date": 1986,
     "duration_years": 11,
     "years": {
         1976: {
@@ -234,8 +234,8 @@ cycle21 = {
         }}}
 cycle22 = {
     "cycle_number": 22,
-    "start_date": " 1987",   # official NOAA/SIDC timing
-    "end_date":   "1996",
+    "start_date":1987,   # official NOAA/SIDC timing
+    "end_date":1996,
     "duration_years": 10,
     "years": {
         1987: {
@@ -381,8 +381,8 @@ cycle22 = {
 
 cycle23 = {
     "cycle_number": 23,
-    "start_date": " 1997",   # official NOAA/SIDC timing
-    "end_date":   "2008",
+    "start_date":1997,   # official NOAA/SIDC timing
+    "end_date":2008,
     "duration_years": 12,
     "years": {
         1997: {

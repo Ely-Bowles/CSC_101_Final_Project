@@ -5,8 +5,9 @@ class Time:
     def __init__(self,year,month):
         self.year = year
         self.month = month
+
     def __repr__(self):
-        return str(self.year,self.month)
+        return "Time({}, {})".format(self.year, self.month)
     def __eq__(self,other):
         return (self.year,self.month) == (other.year,other.month)
 
