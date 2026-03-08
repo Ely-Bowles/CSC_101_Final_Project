@@ -1,6 +1,6 @@
 
 
-# Class assigns the year and month for user input to run through program
+#Class assigns the year and month for user input to run through program
 class Time:
     def __init__(self,year,month):
         self.year = year

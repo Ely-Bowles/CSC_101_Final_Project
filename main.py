@@ -3,7 +3,7 @@ from Classes import Time
 
 cycles = [Data.cycle21_obj, Data.cycle22_obj, Data.cycle23_obj]
 
-##################################################################
+###################################################################
 
 def find_percent(v:int)->Time:
         for y in cycle.years:
